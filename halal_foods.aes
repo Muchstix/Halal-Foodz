@@ -1,0 +1,35 @@
+contract OrderNumber =
+
+  record order =
+    { creatorAddress : address,
+      url            : string,
+      name           : string,
+      numberCount      : int }
+
+  record state =
+    { orders      : map(int, order),
+      ordersLength : int }
+
+  entrypoint init() =
+    { orders = {},
+      ordersLength = 0 }
+
+  entrypoint getorder(index : int) : order =
+  	switch(Map.lookup(index, state.orders))
+	    None    => abort("There is no order with this item registered.")
+	    Some(x) => x
+
+  stateful entrypoint registerorder(url' : string, name' : string) =
+    let order = { creatorAddress = Call.caller, url = url', name = name', numberCount = 0}
+    let index = getordersLength() + 1
+    put(state{ orders[index] = order, ordersLength = index })
+
+  entrypoint getordersLength() : int =
+    state.ordersLength
+
+  stateful entrypoint numberorder(index : int) =
+    let order = getorder(index)
+    Chain.spend(order.creatorAddress, Call.value)
+    let updatednumberCount = order.numberCount + Call.value
+    let updatedOrders = state.orders{ [index].numberCount = updatednumberCount }
+    put(state{ orders = updatedOrders })
