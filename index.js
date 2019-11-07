@@ -1,4 +1,4 @@
-contract OrderNumber =
+contract OrderNumber = `
 
   record order =
     { creatorAddress : address,
@@ -33,6 +33,7 @@ contract OrderNumber =
     let updatednumberCount = order.numberCount + Call.value
     let updatedOrders = state.orders{ [index].numberCount = updatednumberCount }
     put(state{ orders = updatedOrders })
+ `;
 
 //Address of the order voting smart contract on the testnet of the aeternity blockchain
 const contractAddress = 'ct_2aiYhGbSQJLDxaWjkeGdZiJxThXnff1xoAPTipWB4GCjEJZEtY';
