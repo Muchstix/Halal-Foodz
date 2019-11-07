@@ -1,4 +1,6 @@
-contract OrderNumber = `
+const contractSource = `
+
+contract OrderNumber =
 
   record order =
     { creatorAddress : address,
