@@ -1,6 +1,6 @@
 body{
   background-color:#311B58;
-  padding: 1em;
+
 }
 
 .div-center {
@@ -47,4 +47,9 @@ img{
   padding-top: 0.5em;
   background-color: #F5F5F5;
   border: 0.5em solid #F5F5F5;
+}
+.nimipersonal{
+  overflow-y : auto;
+width: 370px;
+height: 100vh
 }
