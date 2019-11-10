@@ -345,13 +345,13 @@ $('#order_meat').click(function(){
 $('#order_falafel').click(function(){
   $("#loader").show();
    console.log("orderred falafel");
-  contractCall("makeOrder",[],3*1000000000000000000);
+  contractCall("makeOrder",[],2*1000000000000000000);
   $("#loader").hide();
 });
 $('#order_doro').click(function(){
   $("#loader").show();
   console.log("ordered doro");
-  contractCall("makeOrder",[],2*1000000000000000000);
+  contractCall("makeOrder",[],3*1000000000000000000);
   $("#loader").hide();
 });
 
