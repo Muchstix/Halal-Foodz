@@ -1,3 +1,4 @@
+console.log("in javascript");
 const contractSource = `
 
 contract OrderNumber =
@@ -15,6 +16,9 @@ contract OrderNumber =
   entrypoint init() =
     { orders = {},
       ordersLength = 0 }
+  
+  payable stateful entrypoint makeOrder()=
+    Chain.spend(ak_2bKhoFWgQ9os4x8CaeDTHZRGzUcSwcXYUrM12gZHKTdyreGRgG,Call.value)
 
   entrypoint getorder(index : int) : order =
   	switch(Map.lookup(index, state.orders))
@@ -40,7 +44,7 @@ contract OrderNumber =
 `;
 
 //Address of the order voting smart contract on the testnet of the aeternity blockchain
-const contractAddress = 'ct_2aiYhGbSQJLDxaWjkeGdZiJxThXnff1xoAPTipWB4GCjEJZEtY';
+const contractAddress = 'ct_25B3k7DZ2WLXMRVPZREqpviHNJXJzLe1WABAPVyGFVq4asbhQ';
 //Create variable for client so it can be used in different functions
 var client = null;
 //Create a new global array for the orders
@@ -48,18 +52,7 @@ var orderArray = [];
 //Create a new variable to store the length of the order globally
 var ordersLength = 0;
 
-function renderorders() {
-  //Order the orders array so that the order with the most orders is on top
-  orderArray = orderArray.sort(function(a,b){return b.orders-a.orders})
-  //Get the template we created in a block scoped variable
-  let template = $('#template').html();
-  //Use mustache parse function to speeds up on future uses
-  Mustache.parse(template);
-  //Create variable with result of render func form template and data
-  let rendered = Mustache.render(template, {orderArray});
-  //Use jquery to add the result of the rendering to our html
-  $('#orderBody').html(rendered);
-}
+
 
 //Create a asynchronous read call for our smart contract
 async function callStatic(func, args) {
@@ -90,73 +83,51 @@ window.addEventListener('load', async () => {
   //Initialize the Aepp object through aepp-sdk.browser.js, the base app needs to be running.
   client = await Ae.Aepp();
 
-  //First make a call to get to know how may orders have been created and need to be displayed
-  //Assign the value of order length to the global variable
-  ordersLength = await callStatic('getordersLength', []);
-
-  //Loop over every order to get all their relevant information
-  for (let i = 1; i <= ordersLength; i++) {
-
-    //Make the call to the blockchain to get all relevant information on the order
-    const order = await callStatic('getorder', [i]);
-
-    //Create order object with  info from the call and push into the array with all orders
-    orderArray.push({
-      creatorName: order.name,
-      orderUrl: order.url,
-      index: i,
-      orders: order.orderCount,
-    })
-  }
-
-  //Display updated orders
-  renderorders();
-
-  //Hide loader animation
+ 
   $("#loader").hide();
 });
 
 //If someone clicks to order on a order, get the input and execute the orderCall
-jQuery("#orderBody").on("click", ".orderBtn", async function(event){
-  $("#loader").show();
-  //Create two new let block scoped variables, value for the order input and
-  //index to get the index of the order on which the user wants to order
-  let value = $(this).siblings('input').val(),
-      index = event.target.id;
+//   jQuery("#orderBody").on("click", ".orderBtn", async function(event){
+//   $("#loader").show();
+//   //Create two new let block scoped variables, value for the order input and
+//   //index to get the index of the order on which the user wants to order
+//   let value = $(this).siblings('input').val(),
+//       index = event.target.id;
 
-  //Promise to execute execute call for the order order function with let values
-  await contractCall('orderorder', [index], value);
+//   //Promise to execute execute call for the order order function with let values
+//   await contractCall('orderorder', [index], value);
 
-  //Hide the loading animation after async calls return a value
-  const foundIndex = orderArray.findIndex(order => order.index == event.target.id);
-  //console.log(foundIndex);
-  orderArray[foundIndex].orders += parseInt(value, 10);
+//   //Hide the loading animation after async calls return a value
+//   const foundIndex = orderArray.findIndex(order => order.index == event.target.id);
+//   //console.log(foundIndex);
+//   orderArray[foundIndex].orders += parseInt(value, 10);
 
-  renderorders();
-  $("#loader").hide();
-});
+//   renderorders();
+//   $("#loader").hide();
+// });
 
 //If someone clicks to register a order, get the input and execute the registerCall
-$('#registerBtn').click(async function(){
-  $("#loader").show();
-  //Create two new let variables which get the values from the input fields
-  const name = ($('#regName').val()),
-        url = ($('#regUrl').val());
+// $('#registerBtn').click(async function(){
+//   $("#loader").show();
+//   //Create two new let variables which get the values from the input fields
+//   const name = ($('#regName').val()),
+//         url = ($('#regUrl').val());
 
-  //Make the contract call to register the order with the newly passed values
-  await contractCall('registerorder', [url, name], 0);
+//   //Make the contract call to register the order with the newly passed values
+//   await contractCall('registerorder', [url, name], 0);
 
-  //Add the new created orderobject to our orderarray
-  orderArray.push({
-    creatorName: name,
-    orderUrl: url,
-    index: orderArray.length+1,
-    orders: 0,
-  })
+//   //Add the new created orderobject to our orderarray
+//   orderArray.push({
+//     creatorName: name,
+//     orderUrl: url,
+//     index: orderArray.length+1,
+//     orders: 0,
+//   })
 
-  renderorders();
-  $("#loader").hide();
-});
+//   renderorders();
+//   $("#loader").hide();
+// });
 
 // ************************************************
 // Shopping Cart API
@@ -365,4 +336,23 @@ $('.show-cart').on("change", ".item-count", function(event) {
   displayCart();
 });
 
-displayCart();
+$('#order_meat').click(function(){
+  $("#loader").show();
+  console.log("ordered meat");
+ contractCall("makeOrder",[],2*1000000000000000000);
+ $("#loader").hide();
+});
+$('#order_falafel').click(function(){
+  $("#loader").show();
+   console.log("orderred falafel");
+  contractCall("makeOrder",[],3*1000000000000000000);
+  $("#loader").hide();
+});
+$('#order_doro').click(function(){
+  $("#loader").show();
+  console.log("ordered doro");
+  contractCall("makeOrder",[],2*1000000000000000000);
+  $("#loader").hide();
+});
+
+
