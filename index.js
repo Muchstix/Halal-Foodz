@@ -354,5 +354,17 @@ $('#order_doro').click(function(){
   contractCall("makeOrder",[],3*1000000000000000000);
   $("#loader").hide();
 });
+$('#order_rice').click(function(){
+  $("#loader").show();
+  console.log("ordered rice");
+  contractCall("makeOrder",[],3*1000000000000000000);
+  $("#loader").hide();
+});
+$('#order_trey').click(function(){
+  $("#loader").show();
+  console.log("ordered trey-siga");
+  contractCall("makeOrder",[],3*1000000000000000000);
+  $("#loader").hide();
+});
 
 
