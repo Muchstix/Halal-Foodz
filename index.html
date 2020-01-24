@@ -4,7 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!-- font awesome -->
+    <link rel="stylesheet" 
+    href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" 
+    integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" 
+    crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -15,124 +19,239 @@
     <title>Halal Food</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-primary">
-            <img src="/logo.png">
-            <form class="form-inline">
-              <button class="btn btn-outline-success" type="button">Sign Up</button>
-              <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
-              <button class="btn btn-sm btn-outline-secondary" type="button">Shopping Cart</button>
-            </form>
-            <form action="action_page.php" style="border:1px solid #ccc">
-              <div class="container">
-                <h1>Sign Up</h1>
-                <p>Please fill in this form to create an account.</p>
-                <hr>
-            
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-            
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-            
-                <label for="psw-repeat"><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-            
-                <label>
-                  <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                </label>
-            
-                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-            
-                <div class="clearfix">
-                  <button type="button" class="cancelbtn">Cancel</button>
-                  <button type="submit" class="signupbtn">Sign Up</button>
-                </div>
-              </div>
-            </form>
-            
-    </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-sm-12 text-center div-center">
-
-          <div id="title-div">
-            <img src="/logo.png">
-            
-            <h1>Menu</h1>
-          </div>
-
-          <div id="message">
-            <div id="loader" class="alert alert-secondary">
-              <img src="img/loading.gif">
-              <div><b>LOADING</b></div>
+      <!-- navbar -->
+      <nav class="navbar" >
+        <div class="navbar-center">
+            <span class="nav-icon">
+                <i class="fas fa-bars"></i>
+            </span>
+            <img src="./img/logo.png" alt="store logo">
+            <div class="cart-btn">
+                <span class="nav-icon">
+                    <i class="fas fa-cart-plus"></i>
+                </span>
+                <div class="cart-items">0</div>
             </div>
-          </div>
-
-         
-
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-12 text-center div-center">
-              <div id="order_doro">
-                <div class="card">
-                  <h5 class="card-title">Doro-Wot</h5>
-                  <img class="card-img-top" src="img/Doro-Wot.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">35.00 æ</h6>
-                    <a href="https://base.aepps.com/" class="btn orderBtn btn-block">ORDER</a>
-                  </div>
-                </div>
-              </div>
-
-              <div id="order_meat">
-                <div class="card">
-                  <h5 class="card-title">Mixed Dishes with meat</h5>
-                  <img class="card-img-top" src="img/diner.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">30.00 æ</h6>
-                    <a href="https://base.aepps.com/" class="btn orderBtn btn-block">ORDER</a>
-                  </div>
-                </div>
-              </div>
-
-              <div id="order_falafel">
-                <div class="card">
-                  <h5 class="card-title">Falafel</h5>
-                  <img class="card-img-top" src="img/4.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">60.00 æ</h6>
-                    <a href="https://base.aepps.com/" class="btn orderBtn btn-block">ORDER</a>
-                  </div>
-                </div>
-              </div>
-
-              <div id="order_rice">
-                <div class="card">
-                  <h5 class="card-title">Rice</h5>
-                  <img class="card-img-top" src="img/rice.jpeg" alt="Card image cap">
-                  <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">45.50 æ</h6>
-                    <a href="https://base.aepps.com/" class="btn orderBtn btn-block">ORDER</a>
-                  </div>
-                </div>
-              </div>
-
-              <div id="order_trey">
-                <div class="card">
-                  <h5 class="card-title">Trey-Siga with Kitfo</h5>
-                  <img class="card-img-top" src="img/trey-siga.png" alt="Card image cap">
-                  <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">87.00 æ</h6>
-                    <a href="https://base.aepps.com/" class="btn orderBtn btn-block">ORDER</a>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
         </div>
+      </nav>
+      <!-- end of navbar -->
+      <!-- Hero -->
+      <header class="hero">
+          <div class="banner">
+              <h1 class="banner-title">halal foods</h1>
+              <button class="banner-btn">shop now</button>
+          </div>
+      </header>
+      <!-- end of hero -->
+      <!-- products -->
+      <section class="products">
+          <div class="section-title">
+              <h2>Menu</h2>
+          </div>
+          <div class="products-center">
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/lukhmi-hyderabadi-samosa.jpg" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="1">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>lukhmi hyderabadi samosa</h3>
+                  <h4>$12.50</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/diner.jpg" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="2">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>mixed dishes with meat</h3>
+                  <h4>$23.05</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/lamb-rogan-josh.jpg" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="3">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>lamb rogan josh</h3>
+                  <h4>$17.00</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/Chicken-Biryani-kalyani.jpg" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="4">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>kalyani chicken biryani</h3>
+                  <h4>$17</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/4.jpg" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="5">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>double falafel</h3>
+                  <h4>$18</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/chicken-biryani.jpg" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="6">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>chicken biryani</h3>
+                  <h4>$14.00</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/vegetable-thali.jpg" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="7">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>vegetable thali</h3>
+                  <h4>$24.00</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/hero.png" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="8">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>mixed dishes</h3>
+                  <h4>$25.50</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                <div class="img-container">
+                    <img src="./img/narkel-diye-benghali.jpg" alt="product"
+                    class="product-img">
+                    <button class="bag-btn" data-id="7">
+                        <i class="fas fa-shopping-cart"></i>
+                        add to bag
+                    </button>
+                </div>
+                <h3>narkel diye benghali</h3>
+                <h4>$24.70</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                <div class="img-container">
+                    <img src="./img/mutton-biryani.jpeg" alt="product"
+                    class="product-img">
+                    <button class="bag-btn" data-id="8">
+                        <i class="fas fa-shopping-cart"></i>
+                        add to bag
+                    </button>
+                </div>
+                <h3>mutton biryani</h3>
+                <h4>$250</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/Doro-Wot.jpg" alt="product"
+                      class="product-img" />
+                      <button class="bag-btn" data-id="7">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>doro wot</h3>
+                  <h4>$23.00</h4>
+              </article>
+              <!-- end of single-product -->
+              <!-- single-product -->
+              <article class="product">
+                  <div class="img-container">
+                      <img src="./img/trey-siga.png" alt="product"
+                      class="product-img">
+                      <button class="bag-btn" data-id="8">
+                          <i class="fas fa-shopping-cart"></i>
+                          add to bag
+                      </button>
+                  </div>
+                  <h3>trey siga</h3>
+                  <h4>$25.00</h4>
+              </article>
+              <!-- end of single-product -->
+              
+          </div>
+      </section>
+      <!-- end of products -->
+      <!-- cart -->
+      <div class="cart-overlay">
+          <div class="cart">
+              <span class="close-cart">
+                  <i class="fas fa-window-close"></i>
+              </span>
+              <h2>your cart</h2>
+              <div class="cart-content">
+                  <!-- cart item --> 
+                  <div class="cart-item">
+                      <img src="./images/product-1.jpeg" alt="product" />
+                      <div>
+                          <h4>queen bed</h4>
+                          <h5>$9.00</h5>
+                          <span class="remove-item">remove</span>
+                      </div>
+                      <div>
+                          <i class="fas fa-chevron-up"></i>
+                          <p class="item-amount">1</p>
+                          <i class="fas fa-chevron-down"></i>
+                      </div>
+                  </div>
+                  <!-- end of cart item -->  
+              </div>
+              <div class="cart-footer">
+                  <h3>your total : $ <span class="cart-total">0</span> </h3>
+                  <button class="clear-cart banner-btn">clear cart</button>
+              </div>
+          </div>
       </div>
-    </div>
+      <!-- end of cart -->
 
 
     <!-- Optional JavaScript -->
